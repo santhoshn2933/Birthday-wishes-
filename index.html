@@ -1,93 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Happy Birthday 🎉</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Birthday Wishes</title>
     <style>
+        /* CSS for beautiful designs and colors */
         body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Segoe UI', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
+            background-color: #fce4ec;
+            font-family: 'Arial', sans-serif;
             text-align: center;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            animation: pop 1s ease;
+            color: #e91e63;
         }
-
-        @keyframes pop {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        .container {
+            padding: 20px;
         }
-
-        .photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #ff4081;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            color: #ff4081;
-            margin-bottom: 10px;
-        }
-
-        .name {
-            font-size: 26px;
+        .header {
+            font-size: 24px;
             font-weight: bold;
-            color: #333;
+            margin-bottom: 20px;
         }
-
         .message {
-            font-size: 16px;
-            color: #555;
-            margin: 15px 0;
-            line-height: 1.6;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
-
-        .date {
-            font-size: 14px;
-            color: #999;
+        .photo {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-
-    <div class="card">
-        <!-- 🔽 PHOTO HERE -->
-        <img src="N.jpg" alt="Birthday Person" class="photo">
-
-        <h1>🎉 Happy Birthday 🎂</h1>
-        <div class="name">🎈 SANTOSH 🎈</div>
-
-        <div class="message">
-            May your day be as special and amazing as you are 💖  
-            Wishing you endless smiles and happiness ✨
-        </div>
-
-        <div class="date" id="todayDate"></div>
+    <div class="container">
+        <div class="header">Happy Birthday, <span id="friendName">Srimathi Garu</span>!</div>
+        <img id="photo" class="photo" src="N.jpg" alt="Friend's Photo">
+        <div id="message" class="message">YOUR_MESSAGE</div>
+        <div id="date"></div>
     </div>
 
     <script>
-        const today = new Date();
-        document.getElementById("todayDate").innerText =
-            "🎁 " + today.toDateString();
-    </script>
+        // JavaScript for scheduling and date validation
+        const birthdayDate = new Date(2026-01-18); // Format: YYYY-MM-DD
+        const currentDate = new Date();
 
+        // Check if the current date is the birthday date
+        if (currentDate.getMonth() === birthdayDate.getMonth() && currentDate.getDate() === birthdayDate.getDate()) {
+            // Display the content
+            document.getElementById('date').innerText = currentDate.toDateString();
+        } else {
+            // Hide content if it's not the birthday
+            document.querySelector('.container').style.display = 'none';
+            alert("It's not the birthday yet!"); // Optional: alert or redirect
+        }
+
+        // Note: For automatic scheduled delivery, this code needs to be hosted on a server 
+        // that can run scheduled tasks (e.g., Node.js with cron) and send messages 
+        // via a messaging API or scheduled email service.
+    </script>
 </body>
 </html>
